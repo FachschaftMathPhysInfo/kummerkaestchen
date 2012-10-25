@@ -1,4 +1,5 @@
 <?
+    include("../config.php");
     function utf8_to_latin2($str) {
         return iconv('utf-8', 'ISO-8859-2', $str);
     }
@@ -23,34 +24,34 @@
             if (isset($_GET["approve"])) {
                 $id = preg_replace("/[^0-9a-f]/", "", $_GET["approve"]);
                 $found = false;
-                if (file_exists("posts_inf/$id.txt")) {
+                if (file_exists("../posts_inf/$id.txt")) {
                     $found = true;
-                    $file = file("posts_inf/$id.txt", FILE_IGNORE_NEW_LINES);
+                    $file = file("../posts_inf/$id.txt", FILE_IGNORE_NEW_LINES);
 
                     $from = $file[0];
                     if ($from == "") {
-                        $from = "noreply@example.com";
+                        $from = $conf['default_mail'];
                     }
 
                     $msg = join("\n", array_splice($file, 1));
-                    if (send_mail($msg, $from, "Informatik", "mail+kummerkasten@merovius.de")) {
-                        unlink("posts_inf/$id.txt");
+                    if (send_mail($msg, $from, "Informatik", $conf['info_mail'])) {
+                        unlink("../posts_inf/$id.txt");
                     } else {
                         echo "<p>Konnte Mail nicht versenden</p>";
                     }
                 }
-                if (file_exists("posts_math/$id.txt")) {
+                if (file_exists("../posts_math/$id.txt")) {
                     $found = true;
-                    $file = file("posts_math/$id.txt", FILE_IGNORE_NEW_LINES);
+                    $file = file("../posts_math/$id.txt", FILE_IGNORE_NEW_LINES);
 
                     $from = $file[0];
                     if ($from == "") {
-                        $from = "noreply@example.com";
+                        $from = $conf['default_mail'];
                     }
 
                     $msg = join("\n", array_splice($file, 1));
-                    if (send_mail($msg, $from, "Mathematik", "mail+kummerkasten@merovius.de")) {
-                        unlink("posts_math/$id.txt");
+                    if (send_mail($msg, $from, "Mathematik", $conf['math_mail'])) {
+                        unlink("../posts_math/$id.txt");
                     } else {
                         echo "<p>Konnte Mail nicht versenden</p>";
                     }
@@ -62,12 +63,12 @@
             if (isset($_GET["delete"])) {
                 $id = preg_replace("/[^0-9a-f]/", "", $_GET["delete"]);
                 $found = false;
-                if (file_exists("posts_math/$id.txt")) {
-                    unlink("posts_math/$id.txt");
+                if (file_exists("../posts_math/$id.txt")) {
+                    unlink("../posts_math/$id.txt");
                     $found = true;
                 }
-                if (file_exists("posts_inf/$id.txt")) {
-                    unlink("posts_inf/$id.txt");
+                if (file_exists("../posts_inf/$id.txt")) {
+                    unlink("../posts_inf/$id.txt");
                     $found = true;
                 }
                 if (!$found) {
@@ -83,7 +84,7 @@
                 <th>Approve</th>
             </tr>
             <?
-                foreach (glob("posts_math/*.txt") as $filename) {
+                foreach (glob("../posts_math/*.txt") as $filename) {
                     $file = file($filename, FILE_IGNORE_NEW_LINES);
 
                     preg_match("/posts_math\/(.+)\.txt/", $filename, $matches);
@@ -110,7 +111,7 @@
                 <th>Approve</th>
             </tr>
             <?
-                foreach (glob("posts_inf/*.txt") as $filename) {
+                foreach (glob("../posts_inf/*.txt") as $filename) {
                     $file = file($filename, FILE_IGNORE_NEW_LINES);
 
                     preg_match("/posts_inf\/(.+)\.txt/", $filename, $matches);

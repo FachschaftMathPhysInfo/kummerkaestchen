@@ -1,0 +1,5 @@
+<?
+    $conf['default_mail'] = "noreply@example.com";
+    $conf['info_mail'] = "informatik@example.com";
+    $conf['math_mail'] = "mathematik@example.com";
+?>

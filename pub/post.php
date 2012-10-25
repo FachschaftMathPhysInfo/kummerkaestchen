@@ -8,9 +8,9 @@
         <?
             foreach ($_POST['fach'] as $fach) {
                 if ($fach == "μ") {
-                    $file = "posts_math/";
+                    $file = "../posts_math/";
                 } else {
-                    $file = "posts_inf/";
+                    $file = "../posts_inf/";
                 }
                 $mail = preg_replace('/\n|\r/', '', $_POST["email"]);
                 $file .= sha1($_POST["email"] . $_POST["text"]) . ".txt";
