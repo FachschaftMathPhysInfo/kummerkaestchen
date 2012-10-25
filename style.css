@@ -1,0 +1,70 @@
+html {
+    background: #eee;
+    padding: 0.5em;
+}
+
+body {
+    margin: 1em auto;
+    padding: 0.5em 1em 1em 1em;
+    border-radius: 15px;
+    display: block;
+    width: 50em;
+    background: #ccc;
+    box-shadow: 0 0 20px #000;
+}
+
+h1 {
+    text-align: center;
+    font-variant: small-caps;
+}
+
+blockquote {
+    margin: 1em 3em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background: #bbf;
+    border: solid 1px #bbb;
+    font-family: sans-serif;
+}
+
+blockquote:before {
+    content: "„";
+}
+
+blockquote:after {
+    content: "“";
+}
+
+form {
+    margin-top: 2em;
+}
+
+textarea {
+    width: 100%;
+    margin: 1em auto;
+}
+
+input#submit {
+    display: block;
+    float: right;
+}
+
+table {
+    width: 100%;
+}
+
+table tbody th {
+    border: solid 1px #aaa;
+}
+
+table tbody td {
+    border: solid 1px #aaa;
+}
+
+td.appr {
+    text-align: center;
+}
+
+td.appr img {
+    margin: 0.5em;
+}
