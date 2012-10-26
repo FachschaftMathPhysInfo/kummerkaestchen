@@ -24,8 +24,8 @@
             <input type="hidden" name="utf8" value="✔">
 
             <label for="fach">Das Problem betrifft:</label>
-            <label for="math">Mathematik</label><input type="checkbox" name="fach[]" value="μ" id="math">
-            <label for="inf">Informatik</label><input type="checkbox" name="fach[]" value="ι" id="inf">
+            <input type="checkbox" name="fach[]" value="μ" id="math"><label for="math">Mathematik</label>
+            <input type="checkbox" name="fach[]" value="ι" id="inf"><label for="inf">Informatik</label>
 
             <textarea rows="10" cols="80" name="text"></textarea>
             <label for="email">E-Mail (optional):</label> <input name="email">

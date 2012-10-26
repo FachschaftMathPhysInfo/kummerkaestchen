@@ -68,3 +68,7 @@ td.appr {
 td.appr img {
     margin: 0.5em;
 }
+
+input#inf {
+    margin-left: 1em;
+}
